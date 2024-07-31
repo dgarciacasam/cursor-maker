@@ -8,29 +8,29 @@ export const Working = ({ fill, stroke }) => {
         xmlns='http://www.w3.org/2000/svg'
       >
         <linearGradient id='busya' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#4ab4ef' />
-          <stop offset='1' stop-color='#3582e5' />
+          <stop offset='0' stopColor='#4ab4ef' />
+          <stop offset='1' stopColor='#3582e5' />
         </linearGradient>
         <linearGradient id='busyb' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#3481e4' />
-          <stop offset='1' stop-color='#2051db' />
+          <stop offset='0' stopColor='#3481e4' />
+          <stop offset='1' stopColor='#2051db' />
         </linearGradient>
         <linearGradient id='busyc' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#6bdcfc' />
-          <stop offset='1' stop-color='#4dc6fa' />
+          <stop offset='0' stopColor='#6bdcfc' />
+          <stop offset='1' stopColor='#4dc6fa' />
         </linearGradient>
         <linearGradient id='busyd' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#4bc5f9' />
-          <stop offset='1' stop-color='#2fb0f8' />
+          <stop offset='0' stopColor='#4bc5f9' />
+          <stop offset='1' stopColor='#2fb0f8' />
         </linearGradient>
         <mask id='busye' fill='#fff'>
           <path
             d='m1 23c0 4.971 4.03 9 9 9 4.97 0 9-4.029 9-9 0-4.971-4.03-9-9-9-4.97 0-9 4.029-9 9z'
             fill='#fff'
-            fill-rule='evenodd'
+            fillRule='evenodd'
           />
         </mask>
-        <g fill='none' fill-rule='evenodd' transform='translate(7)'>
+        <g fill='none' fillRule='evenodd' transform='translate(7)'>
           <g mask='url(#busye)'>
             <g transform='translate(1 14)'>
               <path d='m0 0h9v9h-9z' fill='url(#busya)' />
@@ -39,7 +39,7 @@ export const Working = ({ fill, stroke }) => {
               <path d='m0 9h9v9h-9z' fill='url(#busyd)' />
             </g>
           </g>
-          <g fill-rule='nonzero'>
+          <g fillRule='nonzero'>
             <path
               d='m0 16.422v-16.015l11.591 11.619h-7.041l-.151.124z'
               fill={stroke}

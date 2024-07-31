@@ -3,28 +3,28 @@ export const Busy = ({ fill, stroke }) => {
     <article>
       <svg height='32' viewBox='0 0 32 32' width='32'>
         <linearGradient id='beachballa' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#ffd305' />
-          <stop offset='1' stop-color='#fdcf01' />
+          <stop offset='0' stopColor='#ffd305' />
+          <stop offset='1' stopColor='#fdcf01' />
         </linearGradient>
         <linearGradient id='beachballb' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#52cf30' />
-          <stop offset='1' stop-color='#3bbd1c' />
+          <stop offset='0' stopColor='#52cf30' />
+          <stop offset='1' stopColor='#3bbd1c' />
         </linearGradient>
         <linearGradient id='beachballc' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#14adf6' />
-          <stop offset='1' stop-color='#1191f4' />
+          <stop offset='0' stopColor='#14adf6' />
+          <stop offset='1' stopColor='#1191f4' />
         </linearGradient>
         <linearGradient id='beachballd' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#ca70e1' />
-          <stop offset='1' stop-color='#b452cb' />
+          <stop offset='0' stopColor='#ca70e1' />
+          <stop offset='1' stopColor='#b452cb' />
         </linearGradient>
         <linearGradient id='beachballe' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#ff645d' />
-          <stop offset='1' stop-color='#ff4332' />
+          <stop offset='0' stopColor='#ff645d' />
+          <stop offset='1' stopColor='#ff4332' />
         </linearGradient>
         <linearGradient id='beachballf' x1='50%' x2='50%' y1='0%' y2='100%'>
-          <stop offset='0' stop-color='#fbb114' />
-          <stop offset='1' stop-color='#ff9508' />
+          <stop offset='0' stopColor='#fbb114' />
+          <stop offset='1' stopColor='#ff9508' />
         </linearGradient>
         <g fill='none' transform='translate(6 6)'>
           <path

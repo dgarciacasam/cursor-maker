@@ -19,27 +19,56 @@ import { VerticalResize } from './components/cursors/VerticalResize'
 import { Working } from './components/cursors/Working'
 import { Busy } from './components/cursors/Busy'
 import { Location } from './components/cursors/Location'
+import { convertSVGToCur } from './services/converSVGToCur'
+import { useRef } from 'react'
 
 function App() {
   const [fill, setFill] = useState('#000')
   const [stroke, setStroke] = useState('#fff')
+  const svgRef = useRef()
+
+  const handleCurDownload = () => {
+    convertSVGToCur('./react.svg', 0, 0).then((curBlob) => {
+      const url = URL.createObjectURL(curBlob)
+      // Puedes usar el URL para descargar el archivo .cur o usarlo como quieras
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'cursor.cur'
+      a.click()
+    })
+  }
 
   return (
     <>
       <header>
-        <h1 className='texto-degradado'>CURSOR MAKER</h1>
+        <h1 className='texto-degradado'>
+          CURSOR MAKER <span>for windows</span>
+        </h1>
       </header>
       <main>
-        <section className='selectors'>
-          <div>
-            <ColorPicker label='Fill' color={fill} setColor={setFill} />
-          </div>
-          <div>
-            <ColorPicker label='Stroke' color={stroke} setColor={setStroke} />
+        <section>
+          <div className='selectors'>
+            <div>
+              <ColorPicker label='Fill' color={fill} setColor={setFill} />
+            </div>
+            <div>
+              <button
+                className='downloadButton'
+                onClick={() => {
+                  console.log('click')
+                  handleCurDownload()
+                }}
+              >
+                DOWNLOAD <img src='./heart.svg' alt='Heart Pixel Icon' />
+              </button>
+            </div>
+            <div>
+              <ColorPicker label='Stroke' color={stroke} setColor={setStroke} />
+            </div>
           </div>
         </section>
-        <section className='cursors'>
-          <Normal fill={fill} stroke={stroke}></Normal>
+        <section className='cursors' ref={svgRef}>
+          <Normal fill={fill} stroke={stroke} />
           <Help fill={fill} stroke={stroke} />
           <Working fill={fill} stroke={stroke} />
           <Busy fill={fill} stroke={stroke} />
