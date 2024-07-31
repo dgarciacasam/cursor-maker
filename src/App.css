@@ -1,10 +1,40 @@
 main {
   width: 100%;
-  height: 100%;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  max-height: 80px;
+}
+
+.selectors {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8rem;
+}
+
+label {
+  font-size: 24px;
+}
+
+.cursors {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  gap: 20px;
+  padding: 8px;
 }
 
 h1 {
   font-size: 72px;
+  margin-block: 1rem;
 }
 
 .texto-degradado {

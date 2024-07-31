@@ -14,6 +14,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
 body {
   height: 100%;
   width: 100%;
