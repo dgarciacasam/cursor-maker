@@ -53,7 +53,7 @@ export const Busy = ({ fill, stroke }) => {
           />
         </g>
       </svg>
-      <span>Pan</span>
+      <span>Busy</span>
     </article>
   )
 }

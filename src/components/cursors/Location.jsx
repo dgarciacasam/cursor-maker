@@ -18,7 +18,7 @@ export const Location = ({ fill, stroke }) => {
           />
         </g>
       </svg>
-      <span>Person</span>
+      <span>Location</span>
     </article>
   )
 }

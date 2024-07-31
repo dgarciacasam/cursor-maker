@@ -19,6 +19,7 @@ import { VerticalResize } from './components/cursors/VerticalResize'
 import { Working } from './components/cursors/Working'
 import { Busy } from './components/cursors/Busy'
 import { Location } from './components/cursors/Location'
+
 function App() {
   const [fill, setFill] = useState('#000')
   const [stroke, setStroke] = useState('#fff')
