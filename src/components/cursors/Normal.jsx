@@ -1,7 +1,18 @@
-export const Normal = ({ fill, stroke }) => {
+import { useRef } from 'react'
+
+export const Normal = ({ fill, stroke, refCallback }) => {
+  const svgRef = useRef()
   return (
     <article>
-      <svg height='32' viewBox='0 0 32 32' width='32'>
+      <svg
+        ref={(el) => {
+          svgRef.current = el
+          refCallback(el)
+        }}
+        height='28'
+        viewBox='0 0 32 32'
+        width='28'
+      >
         <g fill='none' fillRule='evenodd' transform='translate(10 7)'>
           <path
             d='m6.148 18.473 1.863-1.003 1.615-.839-2.568-4.816h4.332l-11.379-11.408v16.015l3.316-3.221z'
