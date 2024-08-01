@@ -1,7 +1,14 @@
-export const Alternate = ({ fill, stroke }) => {
+import { useRef } from 'react'
+
+export const Alternate = ({ fill, stroke, refCallback }) => {
+  const svgRef = useRef()
   return (
     <article>
       <svg
+        ref={(el) => {
+          svgRef.current = el
+          refCallback(el)
+        }}
         height='32'
         viewBox='0 0 32 32'
         width='32'

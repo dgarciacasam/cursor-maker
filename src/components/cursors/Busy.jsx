@@ -1,7 +1,18 @@
-export const Busy = ({ fill, stroke }) => {
+import { useRef } from 'react'
+
+export const Busy = ({ fill, stroke, refCallback }) => {
+  const svgRef = useRef()
   return (
     <article>
-      <svg height='32' viewBox='0 0 32 32' width='32'>
+      <svg
+        ref={(el) => {
+          svgRef.current = el
+          refCallback(el)
+        }}
+        height='32'
+        viewBox='0 0 32 32'
+        width='32'
+      >
         <linearGradient id='beachballa' x1='50%' x2='50%' y1='0%' y2='100%'>
           <stop offset='0' stopColor='#ffd305' />
           <stop offset='1' stopColor='#fdcf01' />

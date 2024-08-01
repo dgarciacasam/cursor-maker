@@ -1,7 +1,14 @@
-export const Handwriting = ({ fill, stroke }) => {
+import { useRef } from 'react'
+
+export const Handwriting = ({ fill, stroke, refCallback }) => {
+  const svgRef = useRef()
   return (
     <article>
       <svg
+        ref={(el) => {
+          svgRef.current = el
+          refCallback(el)
+        }}
         width='32'
         height='32'
         viewBox='0 0 257 257'

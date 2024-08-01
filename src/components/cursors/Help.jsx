@@ -1,7 +1,18 @@
-export const Help = ({ fill, stroke }) => {
+import { useRef } from 'react'
+
+export const Help = ({ fill, stroke, refCallback }) => {
+  const svgRef = useRef()
   return (
     <article>
-      <svg height='32' viewBox='0 0 32 32' width='32'>
+      <svg
+        ref={(el) => {
+          svgRef.current = el
+          refCallback(el)
+        }}
+        height='32'
+        viewBox='0 0 32 32'
+        width='32'
+      >
         <g fill='none' fillRule='evenodd' transform='translate(12 10)'>
           <path
             d='m2.752 9.863h2.474v2.395h-2.474z'

@@ -9,9 +9,9 @@ export const Normal = ({ fill, stroke, refCallback }) => {
           svgRef.current = el
           refCallback(el)
         }}
-        height='28'
+        height='32'
         viewBox='0 0 32 32'
-        width='28'
+        width='32'
       >
         <g fill='none' fillRule='evenodd' transform='translate(10 7)'>
           <path

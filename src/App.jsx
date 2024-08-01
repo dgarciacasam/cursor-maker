@@ -1,6 +1,9 @@
 import './App.css'
-import { useState, useEffect, useRef, useCallback } from 'react'
+
+import { useState, useRef, useCallback } from 'react'
 import { ColorPicker } from './components/ColorPicker'
+import JSZip from 'jszip'
+import { saveAs } from 'file-saver'
 
 import { Normal } from './components/cursors/Normal'
 import { Alternate } from './components/cursors/Alternate'
@@ -20,6 +23,8 @@ import { Working } from './components/cursors/Working'
 import { Busy } from './components/cursors/Busy'
 import { Location } from './components/cursors/Location'
 
+import { cursorNames, convertSvgToPng, convertPngToCur } from './services/utils'
+
 function App() {
   const [fill, setFill] = useState('#000')
   const [stroke, setStroke] = useState('#fff')
@@ -32,91 +37,35 @@ function App() {
     }
   }, [])
 
-  const pngToIco = (images) => {
-    let icoHead = [
-        //.ico header
-        0,
-        0, // Reserved. Must always be 0 (2 bytes)
-        1,
-        0, // Specifies image type: 1 for icon (.ICO) image, 2 for cursor (.CUR) image. Other values are invalid. (2 bytes)
-        images.length & 255,
-        (images.length >> 8) & 255, // Specifies number of images in the file. (2 bytes)
-      ],
-      icoBody = [],
-      pngBody = []
-
-    for (let i = 0, num, pngHead, pngData, offset = 0; i < images.length; i++) {
-      pngData = Array.from(images[i])
-      pngHead = [
-        //image directory (16 bytes)
-        0, // Width 0-255, should be 0 if 256 pixels (1 byte)
-        0, // Height 0-255, should be 0 if 256 pixels (1 byte)
-        0, // Color count, should be 0 if more than 256 colors (1 byte)
-        0, // Reserved, should be 0 (1 byte)
-        8,
-        0, // Color planes when in .ICO format, should be 0 or 1, or the X hotspot when in .CUR format (2 bytes)
-        8,
-        0, // Bits per pixel when in .ICO format, or the Y hotspot when in .CUR format (2 bytes)
-      ]
-      num = pngData.length
-      for (let i = 0; i < 4; i++)
-        pngHead[pngHead.length] = (num >> (8 * i)) & 255 // Size of the bitmap data in bytes (4 bytes)
-
-      num = icoHead.length + (pngHead.length + 4) * images.length + offset
-      for (let i = 0; i < 4; i++)
-        pngHead[pngHead.length] = (num >> (8 * i)) & 255 // Offset in the file (4 bytes)
-
-      offset += pngData.length
-      icoBody = icoBody.concat(pngHead) // combine image directory
-      pngBody = pngBody.concat(pngData) // combine actual image data
-    }
-    return icoHead.concat(icoBody, pngBody)
-  }
-
-  const convertSvgToPng = (svgElement) => {
-    return new Promise((resolve) => {
-      const canvas = document.createElement('canvas')
-      const ctx = canvas.getContext('2d')
-      const svgData = new XMLSerializer().serializeToString(svgElement)
-      canvas.width = 32
-      canvas.height = 32
-
-      const img = new Image()
-      img.onload = function () {
-        ctx.drawImage(img, 0, 0)
-        resolve(canvas.toDataURL('image/png'))
-      }
-      img.src = 'data:image/svg+xml;base64,' + btoa(svgData)
-    })
-  }
-
-  const convertPngToCur = (pngDataUrl) => {
-    return new Promise((resolve) => {
-      fetch(pngDataUrl)
-        .then((response) => response.arrayBuffer())
-        .then((buffer) => {
-          const images = [new Uint8Array(buffer)]
-          const icoData = pngToIco(images)
-          const blob = new Blob([new Uint8Array(icoData)], {
-            type: 'image/x-icon',
-          })
-          const curDataUrl = URL.createObjectURL(blob)
-          resolve(curDataUrl)
-        })
-    })
-  }
-
   const handleDownload = async () => {
-    const svgElement = svgRef.current[0]
+    const zip = new JSZip()
+    const folder = zip.folder('cursors')
+
+    const installFileContentResponse = await fetch('./Install.inf')
+    const fileText = await installFileContentResponse.text()
+    folder.file('Install.inf', fileText)
+
+    const normalCurIndex = [0, 2, 7, 14, 15, 16]
+
+    for (const index in svgRef.current) {
+      const pngArrayBuffer = await convertSvgToPng(svgRef.current[index])
+      let hotspotX = 16 // Ajusta esto según la necesidad
+      let hotspotY = 16 // Ajusta esto según la necesidad
+
+      if (normalCurIndex.includes(parseInt(index))) {
+        hotspotX = 8
+        hotspotY = 8
+      }
+      const curBlob = convertPngToCur(pngArrayBuffer, hotspotX, hotspotY)
+      folder.file(cursorNames[index], curBlob)
+    }
+
+    const zipBlob = await zip.generateAsync({ type: 'blob' })
+    saveAs(zipBlob, 'cursors.zip')
+
+    /*const svgElement = svgRef.current[0]
     const pngDataUrl = await convertSvgToPng(svgElement)
 
-    // Download PNG
-    const pngLink = document.createElement('a')
-    pngLink.href = pngDataUrl
-    pngLink.download = 'image.png'
-    document.body.appendChild(pngLink)
-    pngLink.click()
-    document.body.removeChild(pngLink)
 
     // Convert PNG to CUR and download
     const curDataUrl = await convertPngToCur(pngDataUrl)
@@ -125,7 +74,7 @@ function App() {
     curLink.download = 'image.cur'
     document.body.appendChild(curLink)
     curLink.click()
-    document.body.removeChild(curLink)
+    document.body.removeChild(curLink)*/
   }
 
   return (
