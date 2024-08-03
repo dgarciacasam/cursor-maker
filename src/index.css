@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: 'Pixelify Sans Variable', Inter, system-ui, Avenir, Helvetica,
     Arial, sans-serif;
@@ -15,7 +19,7 @@
 }
 
 #root {
-  width: 70%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-items: center;
