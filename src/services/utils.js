@@ -15,7 +15,7 @@ export const cursorNames = [
   'Alternate.cur',
   'Link.cur',
   'Person.cur',
-  'Pan.cur',
+  'Pin.cur',
 ]
 
 export const pngToIco = (images, hotspotX = 0, hotspotY = 0) => {
