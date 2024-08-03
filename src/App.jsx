@@ -9,7 +9,6 @@ import { Cursors } from './components/Cursors'
 import { Header } from './components/Header'
 
 import { cursorNames, convertSvgToPng, convertPngToCur } from './services/utils'
-
 function App() {
   const [fill, setFill] = useState('#000')
   const [stroke, setStroke] = useState('#fff')
@@ -77,6 +76,9 @@ function App() {
           refCallback={refCallback}
           svgRef={svgRef}
         />
+        <footer className='text-center mt-6 mb-2'>
+          <p>DANIEL GARCÍA CASAMAYOR - 2024</p>
+        </footer>
       </main>
     </>
   )
