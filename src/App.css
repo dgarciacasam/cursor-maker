@@ -2,36 +2,37 @@ main {
   width: 100%;
 }
 
-article {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 8px;
-  max-height: 80px;
-}
+.texto-degradado {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 154, 0, 1) 10%,
+    rgba(208, 222, 33, 1) 20%,
+    rgba(79, 220, 74, 1) 30%,
+    rgba(63, 218, 216, 1) 40%,
+    rgba(47, 201, 226, 1) 50%,
+    rgba(28, 127, 238, 1) 60%,
+    rgba(95, 21, 242, 1) 70%,
+    rgba(186, 12, 248, 1) 80%,
+    rgba(251, 7, 217, 1) 90%,
+    rgba(255, 0, 0, 1) 100%
+  );
 
-h1 {
-  position: relative;
-  font-size: 72px;
-  margin-top: 0.5rem;
+  background-size: 100%;
+  background-repeat: repeat;
+  background-clip: border-box;
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 }
 
 h1 > span {
-  color: white;
-  position: absolute;
-  bottom: 0;
   -webkit-text-fill-color: white;
-  font-size: 24px;
   white-space: pre;
   text-overflow: ellipsis;
-}
-
-.selectors {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
 }
 
 .colorPickerContainer {
@@ -97,45 +98,35 @@ h1 > span {
   z-index: -1;
 }
 
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 120px;
+  max-height: 80px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 0.25rem;
+}
+
 label {
   font-size: 24px;
   margin-bottom: 12px;
   padding-bottom: 12px;
 }
 
-.cursors {
+article > span {
+  width: 100%;
+  text-align: center;
+}
+
+/*.cursors {
   margin-top: 3rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-items: center;
-  gap: 20px;
+  gap: 10px;
   padding: 8px;
   padding-bottom: 4rem;
-}
-
-.texto-degradado {
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 1) 0%,
-    rgba(255, 154, 0, 1) 10%,
-    rgba(208, 222, 33, 1) 20%,
-    rgba(79, 220, 74, 1) 30%,
-    rgba(63, 218, 216, 1) 40%,
-    rgba(47, 201, 226, 1) 50%,
-    rgba(28, 127, 238, 1) 60%,
-    rgba(95, 21, 242, 1) 70%,
-    rgba(186, 12, 248, 1) 80%,
-    rgba(251, 7, 217, 1) 90%,
-    rgba(255, 0, 0, 1) 100%
-  );
-
-  background-size: 100%;
-  background-repeat: repeat;
-  background-clip: border-box;
-
-  -webkit-background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
-}
+}*/
