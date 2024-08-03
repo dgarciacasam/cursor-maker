@@ -1,13 +1,32 @@
 import { Cursor } from './Cursor'
-import { useRef } from 'react'
-export const Cursors = ({ fill, stroke, refCallback }) => {
-  const svgRef = useRef()
+import { convertSvgToPng, convertPngToCur } from '../services/utils'
+export const Cursors = ({ fill, stroke, refCallback, svgRef }) => {
+  const handleDownload = async (svg) => {
+    const svgElement = svg
+    const pngArrayBuffer = await convertSvgToPng(svgElement)
+
+    // Convert PNG to CUR and download
+    const curBlob = convertPngToCur(pngArrayBuffer, 16, 16)
+    const curDataUrl = URL.createObjectURL(curBlob)
+    const curLink = document.createElement('a')
+    curLink.href = curDataUrl
+    curLink.download = 'cursor.cur'
+    document.body.appendChild(curLink)
+    curLink.click()
+    document.body.removeChild(curLink)
+  }
+
   return (
     <section className='grid grid-cols-5 mt-6 gap-1'>
-      <Cursor fill={fill} stroke={stroke} name='Normal'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Normal'
+        handleDownload={() => handleDownload(svgRef.current[0])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[0] = el
             refCallback(el)
           }}
           height='32'
@@ -26,10 +45,16 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Help'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Help'
+        handleDownload={() => handleDownload(svgRef.current[1])}
+        svgRef={svgRef}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[1] = el
             refCallback(el)
           }}
           height='32'
@@ -54,11 +79,16 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Working'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Working'
+        handleDownload={() => handleDownload(svgRef.current[2])}
+      >
         {' '}
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[2] = el
             refCallback(el)
           }}
           height='32'
@@ -111,10 +141,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Busy'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Busy'
+        handleDownload={() => handleDownload(svgRef.current[3])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[3] = el
             refCallback(el)
           }}
           height='32'
@@ -173,10 +208,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Precision'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Precision'
+        handleDownload={() => handleDownload(svgRef.current[4])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[4] = el
             refCallback(el)
           }}
           height='32'
@@ -196,10 +236,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Text'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Text'
+        handleDownload={() => handleDownload(svgRef.current[5])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[5] = el
             refCallback(el)
           }}
           height='32'
@@ -217,11 +262,16 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           />
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Handwritting'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Handwritting'
+        handleDownload={() => handleDownload(svgRef.current[6])}
+      >
         {' '}
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[6] = el
             refCallback(el)
           }}
           width='32'
@@ -278,10 +328,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </defs>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Unavaible'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Unavaible'
+        handleDownload={() => handleDownload(svgRef.current[7])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[7] = el
             refCallback(el)
           }}
           height='32'
@@ -306,10 +361,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Vertical Resize'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Vertical Resize'
+        handleDownload={() => handleDownload(svgRef.current[8])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[8] = el
             refCallback(el)
           }}
           height='32'
@@ -329,10 +389,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Horizontal Resize'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Horizontal Resize'
+        handleDownload={() => handleDownload(svgRef.current[9])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[9] = el
             refCallback(el)
           }}
           height='32'
@@ -352,10 +417,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Diagonal Resize 1 '>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Diagonal Resize 1 '
+        handleDownload={() => handleDownload(svgRef.current[10])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[10] = el
             refCallback(el)
           }}
           height='32'
@@ -375,10 +445,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Diagonal Resize 2'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Diagonal Resize 2'
+        handleDownload={() => handleDownload(svgRef.current[11])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[11] = el
             refCallback(el)
           }}
           height='32'
@@ -398,10 +473,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Move'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Move'
+        handleDownload={() => handleDownload(svgRef.current[12])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[12] = el
             refCallback(el)
           }}
           height='32'
@@ -420,10 +500,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Alternate'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Alternate'
+        handleDownload={() => handleDownload(svgRef.current[13])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[13] = el
             refCallback(el)
           }}
           height='32'
@@ -443,10 +528,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Link'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Link'
+        handleDownload={() => handleDownload(svgRef.current[14])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[14] = el
             refCallback(el)
           }}
           height='32'
@@ -466,10 +556,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Location'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Location'
+        handleDownload={() => handleDownload(svgRef.current[15])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[15] = el
             refCallback(el)
           }}
           height='32'
@@ -489,10 +584,15 @@ export const Cursors = ({ fill, stroke, refCallback }) => {
           </g>
         </svg>
       </Cursor>
-      <Cursor fill={fill} stroke={stroke} name='Person'>
+      <Cursor
+        fill={fill}
+        stroke={stroke}
+        name='Person'
+        handleDownload={() => handleDownload(svgRef.current[16])}
+      >
         <svg
           ref={(el) => {
-            svgRef.current = el
+            svgRef.current[16] = el
             refCallback(el)
           }}
           height='32'

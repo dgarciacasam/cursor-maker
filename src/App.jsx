@@ -47,21 +47,6 @@ function App() {
     const zipBlob = await zip.generateAsync({ type: 'blob' })
     saveAs(zipBlob, 'cursors.zip')
   }
-
-  const handleDownloadOne = async (svg) => {
-    const svgElement = svg.current
-    console.log(svgElement)
-    const pngArrayBuffer = await convertSvgToPng(svgElement)
-
-    // Convert PNG to CUR and download
-    const curDataUrl = convertPngToCur(pngArrayBuffer, 16, 16)
-    const curLink = document.createElement('a')
-    curLink.href = curDataUrl
-    curLink.download = 'image.cur'
-    document.body.appendChild(curLink)
-    curLink.click()
-    document.body.removeChild(curLink)
-  }
   return (
     <>
       <Header />
@@ -86,7 +71,12 @@ function App() {
             </div>
           </div>
         </section>
-        <Cursors fill={fill} stroke={stroke} refCallback={refCallback} />
+        <Cursors
+          fill={fill}
+          stroke={stroke}
+          refCallback={refCallback}
+          svgRef={svgRef}
+        />
       </main>
     </>
   )

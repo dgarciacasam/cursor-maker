@@ -1,9 +1,9 @@
-export const Cursor = ({ fill, stroke, children, name }) => {
+export const Cursor = ({ children, name, handleDownload }) => {
   return (
     <article className='relative'>
       <button
         className='absolute top-2 right-1 p-1 rounded text-white/30 hover:-translate-y-1 hover:text-white  transition'
-        onClick={() => handleDownloadOne(svgRef)}
+        onClick={() => handleDownload()}
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
