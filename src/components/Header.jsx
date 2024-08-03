@@ -3,7 +3,7 @@ export const Header = () => {
     <header>
       <h1 className='texto-degradado relative text-7xl font-bold mt-6'>
         CURSOR MAKER{' '}
-        <span className='absolute text-white text-base -bottom-0 -right-16'>
+        <span className='absolute text-white text-base -bottom-2 -right-8'>
           for windows
         </span>
       </h1>
