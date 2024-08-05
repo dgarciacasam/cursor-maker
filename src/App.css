@@ -39,65 +39,6 @@ h1 > span {
   margin-top: 0.5rem;
 }
 
-.downloadButtonContainer {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.downloadButton {
-  font-size: 24px;
-  color: black;
-  font-family: 'Pixelify Sans Variable';
-  text-transform: uppercase;
-  position: relative;
-  background: white;
-  z-index: 2;
-  height: auto;
-  width: auto;
-  margin: 10px;
-  padding: 10px 10px;
-  cursor: pointer;
-  border: none;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.downloadButton:focus-visible {
-  outline: none;
-}
-
-.downloadButton:active {
-  top: 2px;
-}
-
-.downloadButton::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: -10px;
-  right: -10px;
-  background: white;
-  z-index: -1;
-}
-
-.downloadButton::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 4px;
-  bottom: 4px;
-  left: -6px;
-  right: -6px;
-  background: white;
-  z-index: -1;
-}
-
 article {
   display: flex;
   flex-direction: column;
@@ -115,12 +56,62 @@ article > span {
   text-align: center;
 }
 
-/*.cursors {
-  margin-top: 3rem;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  justify-items: center;
-  gap: 10px;
-  padding: 8px;
-  padding-bottom: 4rem;
-}*/
+.pressable-button {
+  --color: black;
+  border-radius: 3px;
+  border: 2px solid var(--color);
+  padding: 0.5rem 1rem;
+  box-shadow: 0.5px 1px 0 0 var(--color), 1.5px 2px 0 0 var(--color),
+    2.5px 3px 0 0 var(--color), 3.5px 4px 0 0 var(--color),
+    4.5px 5px 0 0 var(--color), 5.5px 6px 0 0 var(--color);
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: box-shadow 0.35s, top 0.3s, left 0.3s, transform 0.4s,
+    outline-color 0.4s;
+  cursor: pointer;
+  transform: rotateX(0) rotateY(0) rotateZ(0);
+  display: inline-block;
+  outline: 2px dashed transparent;
+  position: relative;
+  background-color: white;
+  transition: 0.3s;
+}
+
+.pressable-button:hover {
+  box-shadow: 0 0 0 0 var(--color), 0 0 0 0 var(--color), 0 0 0 0 var(--color),
+    0 0 0 0 var(--color), 0 0 0 0 var(--color), 0 0 0 0 var(--color);
+  top: 6px;
+  left: 5.5px;
+  transform: rotateX(5deg) rotateY(3deg) rotateZ(0.25deg);
+}
+
+.pressable-button:focus {
+  --background: var(--pressable-button-background-color);
+  --shadow: var(--pressable-button-shadow-color);
+  box-shadow: 0 0 0 0 var(--color), 0 0 0 0 var(--color), 0 0 0 0 var(--color),
+    0 0 0 0 var(--color), 0 0 0 0 var(--color), 0 0 0 0 var(--color),
+    0 0 0 0 var(--color), 0 0 0 2px var(--background), 0 0 0 4px var(--color);
+  outline: 0;
+}
+
+.pressable-button:after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 0.5em;
+  height: 0;
+  border-radius: 3em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  background-color: transparent;
+  transition: bottom 0.4s, height 0.3s;
+}
+
+.pressable-button:focus:after {
+  height: 0.5em;
+  bottom: -1em;
+  background-color: black;
+}

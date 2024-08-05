@@ -59,12 +59,12 @@ function App() {
             </div>
             <div>
               <button
-                className='downloadButton'
                 onClick={() => {
                   handleDownload()
                 }}
+                className='pressable-button text-2xl font-medium bg-white text-black'
               >
-                DOWNLOAD PACK <img src='./heart.svg' alt='Heart Pixel Icon' />
+                Download pack
               </button>
             </div>
             <div>
