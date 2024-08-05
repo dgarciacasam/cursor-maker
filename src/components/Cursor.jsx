@@ -2,6 +2,7 @@ export const Cursor = ({ children, name, handleDownload }) => {
   return (
     <article className='relative'>
       <button
+        aria-label='Download cursor'
         className='absolute top-2 right-1 p-1 rounded text-white/30 hover:-translate-y-1 hover:text-white  transition'
         onClick={() => handleDownload()}
       >

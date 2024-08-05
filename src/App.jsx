@@ -1,4 +1,5 @@
 import './App.css'
+import { dgarcia } from './services/dgarciacasam'
 
 import { useState, useRef, useCallback } from 'react'
 import { ColorPicker } from './components/ColorPicker'
@@ -9,6 +10,7 @@ import { Cursors } from './components/Cursors'
 import { Header } from './components/Header'
 
 import { cursorNames, convertSvgToPng, convertPngToCur } from './services/utils'
+dgarcia()
 function App() {
   const [fill, setFill] = useState('#000')
   const [stroke, setStroke] = useState('#fff')
@@ -50,7 +52,7 @@ function App() {
     <>
       <Header />
       <main>
-        <section className='mt-6'>
+        <section className='mt-8'>
           <div className='flex justify-center items-center gap-12'>
             <div>
               <ColorPicker label='Fill' color={fill} setColor={setFill} />
@@ -62,7 +64,7 @@ function App() {
                   handleDownload()
                 }}
               >
-                DOWNLOAD <img src='./heart.svg' alt='Heart Pixel Icon' />
+                DOWNLOAD PACK <img src='./heart.svg' alt='Heart Pixel Icon' />
               </button>
             </div>
             <div>
@@ -76,7 +78,7 @@ function App() {
           refCallback={refCallback}
           svgRef={svgRef}
         />
-        <footer className='text-center mt-6 mb-2'>
+        <footer className='text-center mt-8 mb-4'>
           <p>DANIEL GARCÍA CASAMAYOR - 2024</p>
         </footer>
       </main>

@@ -110,12 +110,6 @@ article {
   border-radius: 0.25rem;
 }
 
-label {
-  font-size: 24px;
-  margin-bottom: 12px;
-  padding-bottom: 12px;
-}
-
 article > span {
   width: 100%;
   text-align: center;

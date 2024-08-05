@@ -1,7 +1,7 @@
 export const Header = () => {
   return (
     <header>
-      <h1 className='texto-degradado relative text-7xl font-bold mt-2'>
+      <h1 className='texto-degradado relative text-7xl font-bold mt-4'>
         CURSOR MAKER{' '}
         <span className='absolute text-white text-base -bottom-2 -right-8'>
           for windows
@@ -9,12 +9,13 @@ export const Header = () => {
       </h1>
       <div className='absolute right-24 top-12 flex gap-4'>
         <a
+          aria-valuetext='Github link'
           href='https://github.com/dgarciacasam/cursor-maker'
-          alt='github logo'
           target='_blank'
           className='p-2 rounded hover:bg-white/10 hover:transition'
         >
           <svg
+            alt='Github logo'
             xmlns='http://www.w3.org/2000/svg'
             width='24'
             height='24'
@@ -32,11 +33,12 @@ export const Header = () => {
         </a>
         <a
           href='https://linkedin.com/in/dgarciacasam'
-          alt='linkedin logo'
+          alt='Linkedin link'
           target='_blank'
           className='p-2 rounded hover:bg-white/10 hover:transition'
         >
           <svg
+            alt='Linkedin logo'
             xmlns='http://www.w3.org/2000/svg'
             width='24'
             height='24'
