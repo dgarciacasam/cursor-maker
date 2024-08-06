@@ -35,8 +35,9 @@ h1 > span {
   text-overflow: ellipsis;
 }
 
-.colorPickerContainer {
-  margin-top: 0.5rem;
+div.react-colorful {
+  width: 100%;
+  height: 70%;
 }
 
 article {

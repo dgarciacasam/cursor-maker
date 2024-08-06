@@ -54,9 +54,7 @@ function App() {
       <main>
         <section className='mt-8'>
           <div className='flex justify-center items-center gap-12'>
-            <div>
-              <ColorPicker label='Fill' color={fill} setColor={setFill} />
-            </div>
+            <ColorPicker label='Fill' color={fill} setColor={setFill} />
             <div>
               <button
                 onClick={() => {
@@ -67,9 +65,7 @@ function App() {
                 Download pack
               </button>
             </div>
-            <div>
-              <ColorPicker label='Stroke' color={stroke} setColor={setStroke} />
-            </div>
+            <ColorPicker label='Stroke' color={stroke} setColor={setStroke} />
           </div>
         </section>
         <Cursors
