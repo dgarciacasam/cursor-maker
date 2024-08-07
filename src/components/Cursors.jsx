@@ -17,7 +17,7 @@ export const Cursors = ({ fill, stroke, refCallback, svgRef }) => {
   }
 
   return (
-    <section className='grid grid-cols-5 mt-8 gap-1'>
+    <section className='grid grid-cols-5 mt-12 gap-1'>
       <Cursor
         fill={fill}
         stroke={stroke}

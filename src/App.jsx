@@ -52,7 +52,7 @@ function App() {
     <>
       <Header />
       <main>
-        <section className='mt-8'>
+        <section className='mt-12'>
           <div className='flex justify-center items-center gap-12'>
             <ColorPicker label='Fill' color={fill} setColor={setFill} />
             <div>
@@ -74,7 +74,7 @@ function App() {
           refCallback={refCallback}
           svgRef={svgRef}
         />
-        <footer className='text-center mt-8 mb-4'>
+        <footer className='text-center mt-10 mb-4'>
           <p>DANIEL GARCÍA CASAMAYOR - 2024</p>
         </footer>
       </main>
