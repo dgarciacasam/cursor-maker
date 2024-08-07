@@ -6,7 +6,7 @@ export const ColorPicker = ({ label, color, setColor }) => {
       <span className='text-2xl my-3'>{label}</span>
       <HexColorPicker color={color} onChange={setColor} className='mt-2' />
       <input
-        className='mt-2 p-2 rounded-lg w-full text-xl tracking-wider'
+        className='mt-2 p-2 rounded-lg w-full text-xl tracking-wider bg-[#121212] text-white'
         type='text'
         value={color}
         onChange={(e) => setColor(e.target.value)}
