@@ -3,14 +3,13 @@ import { dgarcia } from './services/dgarciacasam'
 
 import { useState, useRef, useCallback } from 'react'
 import { ColorPicker } from './components/ColorPicker'
-import { saveAs } from 'file-saver'
-import JSZip from 'jszip'
 
 import { Cursors } from './components/Cursors'
 import { Header } from './components/Header'
 
-import { cursorNames, convertSvgToPng, convertPngToCur } from './services/utils'
+import { downloadCursorPack as handleDownload } from './services/downloadService'
 dgarcia()
+
 function App() {
   const [fill, setFill] = useState('#000')
   const [stroke, setStroke] = useState('#fff')
@@ -21,32 +20,6 @@ function App() {
     }
   }, [])
 
-  const handleDownload = async () => {
-    const zip = new JSZip()
-    const folder = zip.folder('cursors')
-
-    const installFileContentResponse = await fetch('./Install.inf')
-    const fileText = await installFileContentResponse.text()
-    folder.file('Install.inf', fileText)
-
-    const normalCurIndex = [0, 2, 7, 14, 15, 16]
-
-    for (const index in svgRef.current) {
-      const pngArrayBuffer = await convertSvgToPng(svgRef.current[index])
-      let hotspotX = 16
-      let hotspotY = 16
-
-      if (normalCurIndex.includes(parseInt(index))) {
-        hotspotX = 8
-        hotspotY = 8
-      }
-      const curBlob = convertPngToCur(pngArrayBuffer, hotspotX, hotspotY)
-      folder.file(cursorNames[index], curBlob)
-    }
-
-    const zipBlob = await zip.generateAsync({ type: 'blob' })
-    saveAs(zipBlob, 'cursors.zip')
-  }
   return (
     <>
       <Header />
@@ -57,7 +30,7 @@ function App() {
             <div>
               <button
                 onClick={() => {
-                  handleDownload()
+                  handleDownload(svgRef)
                 }}
                 className='pressable-button text-2xl font-medium bg-white text-black'
               >
