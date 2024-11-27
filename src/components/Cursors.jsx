@@ -1,5 +1,5 @@
 import { Cursor } from './Cursor'
-import { downloadService as download } from '../services/downloadService'
+import { download } from '../services/downloadService'
 
 export const Cursors = ({ fill, stroke, refCallback, svgRef }) => {
   return (
@@ -69,7 +69,7 @@ export const Cursors = ({ fill, stroke, refCallback, svgRef }) => {
         fill={fill}
         stroke={stroke}
         name='Working'
-        handleDownload={() => download(svgRef.current[2])}
+        handleDownload={() => download(null, 'Working')}
       >
         {' '}
         <svg
@@ -131,17 +131,9 @@ export const Cursors = ({ fill, stroke, refCallback, svgRef }) => {
         fill={fill}
         stroke={stroke}
         name='Busy'
-        handleDownload={() => download(svgRef.current[3])}
+        handleDownload={() => download(null, 'Busy')}
       >
-        <svg
-          ref={(el) => {
-            svgRef.current[3] = el
-            refCallback(el)
-          }}
-          height='32'
-          viewBox='0 0 32 32'
-          width='32'
-        >
+        <svg height='32' viewBox='0 0 32 32' width='32'>
           <linearGradient id='beachballa' x1='50%' x2='50%' y1='0%' y2='100%'>
             <stop offset='0' stopColor='#ffd305' />
             <stop offset='1' stopColor='#fdcf01' />

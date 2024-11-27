@@ -56,7 +56,7 @@ Person.cur
 [Scheme.Txt]
 
 [Strings]
-CUR_DIR       = "Cursors\macosCursors-ns-n"
+CUR_DIR       = "Cursors\custom-macos-cursors"
 SCHEME_NAME   = "macOS Cursors - No Shadow Newer"
 pointer       = "Normal.cur"
 help          = "Help.cur"
