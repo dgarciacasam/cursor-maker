@@ -21,7 +21,6 @@ function App() {
     }
   }, [])
 
-  //Pasar a otro archivo
   const handleDownload = async () => {
     const zip = new JSZip()
     const folder = zip.folder('cursors')
@@ -34,8 +33,8 @@ function App() {
 
     for (const index in svgRef.current) {
       const pngArrayBuffer = await convertSvgToPng(svgRef.current[index])
-      let hotspotX = 16 // Ajusta esto según la necesidad
-      let hotspotY = 16 // Ajusta esto según la necesidad
+      let hotspotX = 16
+      let hotspotY = 16
 
       if (normalCurIndex.includes(parseInt(index))) {
         hotspotX = 8
@@ -75,7 +74,7 @@ function App() {
           svgRef={svgRef}
         />
         <footer className='text-center mt-10 mb-4'>
-          <p>DANIEL GARCÍA CASAMAYOR - 2024</p>
+          <p>☆ DANIEL GARCÍA CASAMAYOR - 2024 ☆</p>
         </footer>
       </main>
     </>
